@@ -2,6 +2,7 @@ package com.marcossalto.pets.di
 
 import android.content.Context
 import androidx.room.Room
+import com.marcossalto.pets.core.Constants.Companion.DATABASE_NAME
 import com.marcossalto.pets.core.Constants.Companion.PET_TABLE
 import com.marcossalto.pets.data.network.PetDB
 import com.marcossalto.pets.data.network.PetDao
@@ -22,7 +23,7 @@ class AppModule {
     ) = Room.databaseBuilder(
         context,
         PetDB::class.java,
-        PET_TABLE
+        DATABASE_NAME
     )
         .build()
 
