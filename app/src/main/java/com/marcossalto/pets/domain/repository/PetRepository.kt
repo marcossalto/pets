@@ -7,7 +7,7 @@ typealias Pets = List<Pet>
 interface PetRepository {
     fun getPetsFromRoom(): Flow<Pets>
     fun addPetToRoom(pet: Pet)
-    fun getPetFromRoom(id: String): Flow<Pet>
+    fun getPetFromRoom(id: Int): Pet
     fun updatePetFromRoom(pet: Pet)
     fun deletePetFromRoom(pet: Pet)
 }

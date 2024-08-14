@@ -16,6 +16,7 @@ import javax.inject.Inject
 class PetsViewModel @Inject constructor(
     private val petRepository: PetRepository
 ) : ViewModel() {
+    var pet by mutableStateOf(Pet(0, "", ""))
     var openDialog by mutableStateOf(false)
     val pets = petRepository.getPetsFromRoom()
 
@@ -23,16 +24,28 @@ class PetsViewModel @Inject constructor(
         petRepository.addPetToRoom(pet)
     }
 
-    fun updatePet(pet: Pet) = viewModelScope.launch(Dispatchers.IO) {
-        petRepository.updatePetFromRoom(pet)
-    }
-
     fun deletePet(pet: Pet) = viewModelScope.launch(Dispatchers.IO) {
         petRepository.deletePetFromRoom(pet)
     }
 
-    fun getPet(id: String) = viewModelScope.launch(Dispatchers.IO) {
-        petRepository.getPetFromRoom(id)
+    fun getPet(id: Int) = viewModelScope.launch(Dispatchers.IO) {
+        pet = petRepository.getPetFromRoom(id)
+    }
+
+    fun updateAnimal(animal: String) = viewModelScope.launch(Dispatchers.IO) {
+        pet = pet.copy(
+            animal = animal
+        )
+    }
+
+    fun updateBreed(breed: String) = viewModelScope.launch(Dispatchers.IO) {
+        pet = pet.copy(
+            breed = breed
+        )
+    }
+
+    fun updatePet(pet: Pet) = viewModelScope.launch(Dispatchers.IO) {
+        petRepository.updatePetFromRoom(pet)
     }
 
     fun openDialog() {

@@ -2,9 +2,13 @@
     <string name="app_name">Pets</string>
     <string name="pets_title">Pets</string>
     <string name="add_pet_title">Add pet</string>">
+    <string name="update_pet_title">Update pet</string>">
     <string name="delete_pet_title">Delete a pet</string>
     <string name="add">Add</string>
+    <string name="update">Update</string>
     <string name="cancel">Cancel</string>
     <string name="you_have_a">You have a …</string>
     <string name="pet_breed">Write your pet\'s breed</string>
+    <string name="animal">Animal</string>
+    <string name="breed">Breed</string>
 </resources>

@@ -14,7 +14,7 @@ class PetRepositoryImpl @Inject constructor(
 
     override fun addPetToRoom(pet: Pet) = petDao.addPet(pet)
 
-    override fun getPetFromRoom(id: String): Flow<Pet> = petDao.getPet(id)
+    override fun getPetFromRoom(id: Int): Pet = petDao.getPet(id)
 
     override fun updatePetFromRoom(pet: Pet) = petDao.updatePet(pet)
 

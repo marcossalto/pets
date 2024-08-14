@@ -56,7 +56,8 @@ fun PetsTopBar() {
 fun PetsContent(
     padding: PaddingValues,
     pets: Pets,
-    deletePet: (pet: Pet) -> Unit
+    deletePet: (pet: Pet) -> Unit,
+    navigateToUpdatePetScreen: (petId: Int) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier
@@ -66,7 +67,8 @@ fun PetsContent(
         items(pets) { pet ->
             PetCard(
                 pet = pet,
-                deletePet = { deletePet(pet) }
+                deletePet = { deletePet(pet) },
+                navigateToUpdatePetScreen = { navigateToUpdatePetScreen(pet.id) }
             )
         }
     }
@@ -75,7 +77,8 @@ fun PetsContent(
 @Composable
 fun PetCard(
     pet: Pet,
-    deletePet: () -> Unit
+    deletePet: () -> Unit,
+    navigateToUpdatePetScreen: (petId: Int) -> Unit
 ) {
     Card(
         modifier = Modifier
@@ -89,7 +92,8 @@ fun PetCard(
         shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation(
             defaultElevation = 3.dp
-        )
+        ),
+        onClick = { navigateToUpdatePetScreen(pet.id) }
     ) {
         Row(
             modifier = Modifier
@@ -226,7 +230,8 @@ fun AddPetFloatingActionButton(
 
 @Composable
 fun PetsScreen(
-    viewModel: PetsViewModel = hiltViewModel()
+    viewModel: PetsViewModel = hiltViewModel(),
+    navigateToUpdatePetScreen: (petId: Int) -> Unit
 ) {
     val pets by viewModel.pets.collectAsState(initial = emptyList())
 
@@ -238,7 +243,8 @@ fun PetsScreen(
                 pets = pets,
                 deletePet = { pet ->
                     viewModel.deletePet(pet)
-                }
+                },
+                navigateToUpdatePetScreen = navigateToUpdatePetScreen
             )
             AddPetDialog(
                 openDialog = viewModel.openDialog,
