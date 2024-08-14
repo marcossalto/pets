@@ -5,10 +5,5 @@ plugins {
     alias(libs.plugins.jetbrains.compose) apply false
     alias(libs.plugins.compose.compiler) apply false
     alias(libs.plugins.ksp) apply false
-}
-
-buildscript {
-    dependencies {
-        classpath(libs.hilt.android.gradle.plugin)
-    }
+    alias(libs.plugins.dagger.hilt) apply false
 }

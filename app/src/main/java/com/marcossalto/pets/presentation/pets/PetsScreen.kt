@@ -133,7 +133,7 @@ fun AddPetDialog(
                         },
                         placeholder = {
                             Text(
-                                text = stringResource(id = R.string.pet_breed)
+                                text = stringResource(id = R.string.you_have_a)
                             )
                         },
                         modifier = Modifier.focusRequester(focusRequester)

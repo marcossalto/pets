@@ -5,8 +5,9 @@ import com.marcossalto.pets.domain.model.Pet
 import com.marcossalto.pets.domain.repository.PetRepository
 import com.marcossalto.pets.domain.repository.Pets
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class PetRepositoryImpl(
+class PetRepositoryImpl @Inject constructor(
     private val petDao: PetDao
 ) : PetRepository {
     override fun getPetsFromRoom(): Flow<Pets> = petDao.getPets()
