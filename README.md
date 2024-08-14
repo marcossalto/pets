@@ -10,3 +10,7 @@ You can Create, Read, Update and Delete pets from Room database.
 * Dagger Hilt - Dependency Injection
 * Room - Data persistence
 * Version Catalog
+
+![Home](screenshots/Screenshot_1.png)
+![Add](screenshots/Screenshot_2.png)
+![Update](screenshots/Screenshot_3.png)
