@@ -55,5 +55,4 @@ class PetsViewModel @Inject constructor(
     fun closeDialog() {
         openDialog = false
     }
-
 }
