@@ -16,7 +16,7 @@ import javax.inject.Inject
 class PetsViewModel @Inject constructor(
     private val petRepository: PetRepository
 ) : ViewModel() {
-    private var openDialog by mutableStateOf(false)
+    var openDialog by mutableStateOf(false)
     val pets = petRepository.getPetsFromRoom()
 
     fun addPet(pet: Pet) = viewModelScope.launch(Dispatchers.IO) {

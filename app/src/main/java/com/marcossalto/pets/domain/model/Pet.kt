@@ -7,7 +7,7 @@ import com.marcossalto.pets.core.Constants.Companion.PET_TABLE
 @Entity(tableName = PET_TABLE)
 data class Pet(
     @PrimaryKey(autoGenerate = true)
-    val id: String,
+    val id: Int,
     val animal: String,
     val breed: String
 )

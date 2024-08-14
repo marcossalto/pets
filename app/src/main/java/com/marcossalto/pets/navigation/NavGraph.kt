@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.marcossalto.pets.navigation.Screen.*
+import com.marcossalto.pets.presentation.pets.PetsScreen
 
 @Composable
 fun NavGraph(
@@ -15,13 +16,13 @@ fun NavGraph(
         startDestination = PetsScreen.route
     ) {
         composable(route = PetsScreen.route) {
-            PetsScreen(navController = navController)
+            PetsScreen()
         }
         composable(route = AddPetScreen.route) {
-            AddPetScreen(navController = navController)
+            // TODO AddPetScreen()
         }
         composable(route = UpdatePetScreen.route) {
-            UpdatePetScreen(navController = navController)
+            // TODO UpdatePetScreen()
         }
     }
 }
