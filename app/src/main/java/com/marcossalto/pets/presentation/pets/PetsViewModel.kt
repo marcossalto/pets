@@ -27,8 +27,8 @@ class PetsViewModel @Inject constructor(
         petRepository.updatePetFromRoom(pet)
     }
 
-    fun deletePet(id: String) = viewModelScope.launch(Dispatchers.IO) {
-        petRepository.deletePetFromRoom(id)
+    fun deletePet(pet: Pet) = viewModelScope.launch(Dispatchers.IO) {
+        petRepository.deletePetFromRoom(pet)
     }
 
     fun getPet(id: String) = viewModelScope.launch(Dispatchers.IO) {

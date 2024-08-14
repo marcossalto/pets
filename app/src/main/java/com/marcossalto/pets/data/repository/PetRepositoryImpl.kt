@@ -18,5 +18,5 @@ class PetRepositoryImpl @Inject constructor(
 
     override fun updatePetFromRoom(pet: Pet) = petDao.updatePet(pet)
 
-    override fun deletePetFromRoom(id: String) = petDao.deletePet(id)
+    override fun deletePetFromRoom(pet: Pet) = petDao.deletePet(pet)
 }

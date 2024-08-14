@@ -9,5 +9,5 @@ interface PetRepository {
     fun addPetToRoom(pet: Pet)
     fun getPetFromRoom(id: String): Flow<Pet>
     fun updatePetFromRoom(pet: Pet)
-    fun deletePetFromRoom(id: String)
+    fun deletePetFromRoom(pet: Pet)
 }

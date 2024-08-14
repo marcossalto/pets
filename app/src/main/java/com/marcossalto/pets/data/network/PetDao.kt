@@ -1,6 +1,7 @@
 package com.marcossalto.pets.data.network
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -23,8 +24,8 @@ interface PetDao {
     @Update
     fun updatePet(pet: Pet)
 
-    @Query("DELETE FROM pet_table WHERE id = :id")
-    fun deletePet(id: String)
+    @Delete
+    fun deletePet(pet: Pet)
 
     @Query("DELETE FROM pet_table")
     fun deleteAllPets()

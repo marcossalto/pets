@@ -11,12 +11,14 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -53,7 +55,8 @@ fun PetsTopBar() {
 @Composable
 fun PetsContent(
     padding: PaddingValues,
-    pets: Pets
+    pets: Pets,
+    deletePet: (pet: Pet) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier
@@ -62,7 +65,8 @@ fun PetsContent(
     ) {
         items(pets) { pet ->
             PetCard(
-                pet = pet
+                pet = pet,
+                deletePet = { deletePet(pet) }
             )
         }
     }
@@ -70,7 +74,8 @@ fun PetsContent(
 
 @Composable
 fun PetCard(
-    pet: Pet
+    pet: Pet,
+    deletePet: () -> Unit
 ) {
     Card(
         modifier = Modifier
@@ -102,7 +107,25 @@ fun PetCard(
                     style = MaterialTheme.typography.bodyLarge
                 )
             }
+            Spacer(modifier = Modifier.weight(1f))
+            DeleteIcon(
+                deletePet = deletePet
+            )
         }
+    }
+}
+
+@Composable
+fun DeleteIcon(
+    deletePet: () -> Unit
+) {
+    IconButton(
+        onClick = deletePet
+    ) {
+        Icon(
+            imageVector = Icons.Default.Delete,
+            contentDescription = stringResource(id = R.string.delete_pet_title)
+        )
     }
 }
 
@@ -212,7 +235,10 @@ fun PetsScreen(
         content = { padding ->
             PetsContent(
                 padding = padding,
-                pets = pets
+                pets = pets,
+                deletePet = { pet ->
+                    viewModel.deletePet(pet)
+                }
             )
             AddPetDialog(
                 openDialog = viewModel.openDialog,
